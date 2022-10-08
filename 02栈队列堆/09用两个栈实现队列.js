@@ -32,10 +32,3 @@ CQueue.prototype.deleteHead = function () {
 
   return this.outStack.pop();
 };
-
-/**
- * Your CQueue object will be instantiated and called as such:
- * var obj = new CQueue()
- * obj.appendTail(value)
- * var param_2 = obj.deleteHead()
- */

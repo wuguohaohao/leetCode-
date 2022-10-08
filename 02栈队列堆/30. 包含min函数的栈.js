@@ -11,10 +11,7 @@ minStack.min();   --> 返回 -3.
 minStack.pop();
 minStack.top();      --> 返回 0.
 minStack.min();   --> 返回 -2.
- */
 
-/**
- * initialize your data structure here.
  */
 var MinStack = function () {
   this.myStack = [];
