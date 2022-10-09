@@ -13,15 +13,11 @@ minStack.top();      --> 返回 0.
 minStack.min();   --> 返回 -2.
 
  */
+
+// 思路，利用辅助栈存储每个值的当前栈的最小值
 var MinStack = function () {
-  this.myStack = [];
-  this.isEmpty = function () {
-    let L = this.myStack.length;
-    if (L === 0) {
-      return;
-    }
-    return L;
-  };
+  this.xStack = [];
+  this.minStack = [Infinity];
 };
 
 /**
@@ -29,32 +25,30 @@ var MinStack = function () {
  * @return {void}
  */
 MinStack.prototype.push = function (x) {
-  this.myStack.push(x);
+  this.xStack.push(x);
+  this.minStack.push(Math.min(this.minStack[this.minStack.length - 1], x));
 };
 
 /**
  * @return {void}
  */
 MinStack.prototype.pop = function () {
-  this.isEmpty();
-  this.myStack.pop();
+  this.xStack.pop();
+  this.minStack.pop();
 };
 
 /**
  * @return {number}
  */
 MinStack.prototype.top = function () {
-  let L = this.isEmpty();
-  return this.myStack[L - 1];
+  return this.xStack[this.xStack.length - 1];
 };
 
 /**
  * @return {number}
  */
 MinStack.prototype.min = function () {
-  this.isEmpty();
-  let min = Math.min.apply(null, this.myStack);
-  return min;
+  return this.minStack[this.minStack.length - 1];
 };
 
 /**
