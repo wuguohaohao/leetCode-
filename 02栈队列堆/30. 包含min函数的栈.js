@@ -14,48 +14,56 @@ minStack.min();   --> 返回 -2.
 
  */
 
-// 思路，利用辅助栈存储每个值的当前栈的最小值
-var MinStack = function () {
-  this.xStack = [];
-  this.minStack = [Infinity];
-};
-
 /**
- * @param {number} x
- * @return {void}
+ * initialize your data structure here.
  */
-MinStack.prototype.push = function (x) {
-  this.xStack.push(x);
-  this.minStack.push(Math.min(this.minStack[this.minStack.length - 1], x));
-};
-
-/**
- * @return {void}
- */
-MinStack.prototype.pop = function () {
-  this.xStack.pop();
-  this.minStack.pop();
-};
-
-/**
- * @return {number}
- */
-MinStack.prototype.top = function () {
-  return this.xStack[this.xStack.length - 1];
-};
-
-/**
- * @return {number}
- */
-MinStack.prototype.min = function () {
-  return this.minStack[this.minStack.length - 1];
-};
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * var obj = new MinStack()
- * obj.push(x)
- * obj.pop()
- * var param_3 = obj.top()
- * var param_4 = obj.min()
- */
+ var MinStack = function() {
+  this.stack = []
+  this.minStack = [Infinity]
+ };
+ 
+ /** 
+  * @param {number} x
+  * @return {void}
+  */
+ MinStack.prototype.push = function(x) {
+ this.stack.push(x);
+ this.minStack.push(Math.min(this.minStack[this.minStack.length -1],x))
+ // minStack中插入较小的值
+ };
+ 
+ /**
+  * @return {void}
+  */
+ MinStack.prototype.pop = function() {
+     if(this.stack.length){
+         this.stack.pop();
+         this.minStack.pop();
+         // minStack与stack同步删除
+     }
+ 
+ };
+ 
+ /**
+  * @return {number}
+  */
+ MinStack.prototype.top = function() {
+     return this.stack[this.stack.length - 1]
+ 
+ };
+ 
+ /**
+  * @return {number}
+  */
+ MinStack.prototype.min = function() {
+     return this.minStack[this.minStack.length - 1]
+ };
+ 
+ /**
+  * Your MinStack object will be instantiated and called as such:
+  * var obj = new MinStack()
+  * obj.push(x)
+  * obj.pop()
+  * var param_3 = obj.top()
+  * var param_4 = obj.min()
+  */
