@@ -3,9 +3,8 @@ var iter = rl[Symbol.asyncIterator]();
 const readline = async () => (await iter.next()).value;
 
 void async function () {
-    // Write your code here
+    // Write your code here ok
     while(line = await readline()){
         let tokens = line.split(' ');
-        
     }
 }()
